@@ -27,10 +27,10 @@
         device = potentialDevices.shift();
         if (!device) return;
 
-        device.open({ stopBits: 0, bitRate: 115200, ctsFlowControl: 0 });
+        device.open({bitRate: 115200});
         device.set_receive_handler(function(data) {
+            console.log('Received: ' + data.byteLength);
             /*
-            //console.log('Received: ' + data.byteLength);
             if(!rawData || rawData.byteLength == 18) rawData = new Uint8Array(data);
             else rawData = appendBuffer(rawData, data);
 
@@ -48,7 +48,7 @@
         var bytes = []; // char codes
         for (var i = 0; i < str.length; ++i) {
           var code = str.charCodeAt(i);
-          bytesv2 = bytes.concat([code & 0xff, code / 256 >>> 0]);
+          bytes = bytes.concat([code & 0xff, code / 256 >>> 0]);
         }
 
 
