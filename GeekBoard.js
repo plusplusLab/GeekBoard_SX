@@ -1,13 +1,6 @@
 (function(ext) {
     // Cleanup function when the extension is unloaded
-    ext._shutdown = function() {};
-
-    // Status reporting code
-    // Use this to report missing hardware, plugin or unsupported browser
-    ext._getStatus = function() {
-        return {status: 2, msg: 'Ready'};
-    };
-
+    console.log('hello');
     // Extension API interactions
     var potentialDevices = [];
 
@@ -77,13 +70,13 @@
         if(poller) poller = clearInterval(poller);
         device = null;
     };
-
+    */
     ext._getStatus = function() {
         if(!device) return {status: 1, msg: 'GeekBoard disconnected'};
         if(watchdog) return {status: 1, msg: 'Scanning for a GeekBoard'};
         return {status: 2, msg: 'GeekBoard connected'};
     }
-    */
+
 
     // Block and block menu descriptions
     var descriptor = {
