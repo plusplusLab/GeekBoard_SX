@@ -72,7 +72,7 @@
             tryNextDevice();
         }, 250);
     };
-
+    /*
     ext._deviceRemoved = function(dev) {
         if(device != dev) return;
         if(poller) poller = clearInterval(poller);
@@ -90,7 +90,7 @@
         if(watchdog) return {status: 1, msg: 'Scanning for a GeekBoard'};
         return {status: 2, msg: 'GeekBoard connected'};
     }
-
+    */
 
     // Block and block menu descriptions
     var descriptor = {
