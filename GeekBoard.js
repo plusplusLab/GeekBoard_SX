@@ -43,14 +43,22 @@
         });
 
         // GeekBoard handshake
-        var pingCmd = "1234";
-        uint=new Uint8Array(pingCmd.length);
-        for(var i=0,j=pingCmd.length;i<j;++i){
-          uint[i]=pingCmd.charCodeAt(i);
+
+        var str = "HS42";
+        var bytes = []; // char codes
+        for (var i = 0; i < str.length; ++i) {
+          var code = str.charCodeAt(i);
+          bytesv2 = bytes.concat([code & 0xff, code / 256 >>> 0]);
         }
 
+
+
+        var pingCmd = new Uint8Array(bytes);
+
+        console.log(pingCmd);
+
         poller = setInterval(function() {
-            device.send(uint.buffer);
+            device.send(pingCmd.buffer);
         }, 50);
         watchdog = setTimeout(function() {
             // This device didn't get good data in time, so give up on it. Clean up and then move on.
