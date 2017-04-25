@@ -27,7 +27,7 @@
         // That will get us back here next time a device is connected.
         device = potentialDevices.shift();
         if (!device) return;
-
+        console.log("opening device");
         device.open({bitRate: 115200});
         device.set_receive_handler(function(data) {
             console.log('Received: ' + data.byteLength);
