@@ -86,23 +86,16 @@
     // Block and block menu descriptions
     var descriptor = {
       blocks:[
-<<<<<<< HEAD
+
         [' ', 'activer digital %m.digital_pins comme %m.digital_modes', 'activer'],
         [' ', 'activer analog %m.analog_pins comme entree', 'aactiver'],
         ['r', 'valeur digital %m.digital_pins', 'valeurd'],
         ['r', 'valeur analog %m.analog_pins', 'valeura']
      ],
+
      menus:{
 
-=======
-        [' ', 'digital %m.digital_pins comme %m.digital_modes', 'activer'],
-        [' ', 'analog %m.analog_pins comme entree', 'aactiver'],
-        ['r', 'valeur de %m.digital_pins', 'valeurd'],
-        ['r', 'valeur de %m.analog_pins', 'valeura']
-     ],
-     menus:{
-     
->>>>>>> ab8de27924a03b68fb73caec4cca65881d39f773
+
         digital_pins:['5', '6', '7', '8'],
         analog_pins:['1', '2', '3', '4'],
         digital_modes:['entree', 'sortie', 'moteur']
