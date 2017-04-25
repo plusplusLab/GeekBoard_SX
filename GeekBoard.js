@@ -12,6 +12,7 @@
     var potentialDevices = [];
 
     ext._deviceConnected = function(dev) {
+        console.log(dev);
         potentialDevices.push(dev);
 
         if (!device) {
