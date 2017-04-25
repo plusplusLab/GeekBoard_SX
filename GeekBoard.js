@@ -28,19 +28,12 @@
         device = potentialDevices.shift();
         if (!device) return;
         console.log("opening device");
-        device.open({bitRate: 115200});
-        device.set_receive_handler(function(data) {
-            console.log('Received: ' + data.byteLength);
-            /*
-            if(!rawData || rawData.byteLength == 18) rawData = new Uint8Array(data);
-            else rawData = appendBuffer(rawData, data);
-
-            if(rawData.byteLength >= 18) {
-                //console.log(rawData);
-                processData();
-                //device.send(pingCmd.buffer);
-            }
-            */
+        device.open({ stopBits: 0, bitRate: 115200, ctsFlowControl: 0 }, function() {
+          console.log('Attempting connection with ' + device.id);
+          device.set_receive_handler(function(data) {
+            var inputData = new Uint8Array(data);
+            console.log(inputData);
+          });
         });
 
         // GeekBoard handshake
@@ -60,7 +53,7 @@
 
         poller = setInterval(function() {
             device.send(pingCmd.buffer);
-        }, 50);
+        }, 1000);
         watchdog = setTimeout(function() {
             // This device didn't get good data in time, so give up on it. Clean up and then move on.
             // If we get good data then we'll terminate this watchdog.
@@ -70,7 +63,7 @@
             device.close();
             device = null;
             tryNextDevice();
-        }, 250);
+        }, 5000);
     };
     /*
     ext._deviceRemoved = function(dev) {
